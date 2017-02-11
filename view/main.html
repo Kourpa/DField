@@ -13,28 +13,32 @@
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 
     <script src="../d3/d3.min.js"></script>
-    <script src="../scripts/Graph.js"></script>
+    <script src="../scripts/notify.min.js"></script>
+    <script src="../scripts/math.js"></script>
+
 </head>
 
 
     <div id="container">
         <div id="accordian">
             <div id="equationInput">
+
+
                 <h3>Equation</h3>
                     <div class="centered">
                         <p class="border-dark">First-order Differential Equation in the form: x' = f(t,x)
-                        <input class="centered border" type="text" value="x' = x^2 - ay + b" title="Equation">
+                        <input class="centered border" type="text" title="Equation" id="equation" onkeyup="populateParameters()">
                         </p>
                         <p class="border-dark">Independent Variable
-                            <input class="centered border" type="text" value="y" maxlength="1" title="Independent Variable">
+                            <input class="centered border" type="text" value="y" maxlength="1" title="Independent Variable" id="independent">
                         </p>
                         <p class="border-dark parameters">Parameter Expressions
-                                <input class="centered border" type="text" value="a = 1" title="Parameter 1">
-                                <input class="centered border" type="text" value="b = 0" title="Parameter 2">
                         </p>
-                        <button class="centered border" id="SetEquation" style="width:48%; float:left; background-color:#007fff; color:white;">Set</button>
-                        <button class="centered border" id="ResetEquation" style="width:48%; float:left; background-color:#007fff; color:white;">Reset</button>
+                        <button class="centered border" id="SetEquation" style="width:48%; float:left; background-color:#007fff; color:white;" onclick="checkEquation()">Set</button>
+                        <button class="centered border" id="ResetEquation" style="width:48%; float:left; background-color:#007fff; color:white;" onclick="resetEquation()">Reset</button>
                     </div>
+
+
                 <h3>Manual Input</h3>
                 <div class="centered">
                     <input class="centered border" type="text" value="x = " title="Variable 1">
@@ -45,6 +49,8 @@
                     <button class="centered border" id="PlotPoint" style="width:48%; float:left; background-color:#007fff; color:white;">Plot</button>
                     <button class="centered border" id="ResetPoint" style="width:48%; float:left; background-color:#007fff; color:white;">Reset</button>
                 </div>
+
+
                 <h3>Display Window</h3>
                     <div class="centered">
                         <p class="border-dark">Maximum Y
@@ -60,6 +66,8 @@
                             <input class="centered border" type="number" value=-10 title="Min X">
                         </p>
                     </div>
+
+
                 <h3>Field Settings</h3>
                 <div class="centered">
                     <p class="border-dark">Direction Field
@@ -70,12 +78,14 @@
                     </select>
                     </p>
                     <p class="border-dark">Field Point Per Row
-                        <input class="centered border" type="number" value=10 title="Row points">
+                        <input class="centered border" type="number" value=20 title="Row points">
                     </p>
                     <p class="border-dark">Field Point Per Column
-                        <input class="centered border" type="number" value=10 title="Column points">
+                        <input class="centered border" type="number" value=20 title="Column points">
                     </p>
                 </div>
+
+
                 <h3>Solver Settings</h3>
                 <div class="centered">
                     <p class="border-dark">Step Size
@@ -87,14 +97,19 @@
         <div id ="graph"></div>
     </div>
 
+<script src="../scripts/Graph.js"></script>
+<script src="../scripts/EquationController.js"></script>
 
     <script>
+
         $("body").css("overflow", "hidden");
-        var g = Graph();
 
         $("#equationInput").accordion({
-            heightStyle: "fill",
+            heightStyle: "fill"
         });
+
+        resetEquation();
+        initVectors(-10, -10, 10, 10);
     </script>
 </html>
 

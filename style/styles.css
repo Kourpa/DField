@@ -1,8 +1,14 @@
+body {
+    margin: 0;
+}
+
 #container{
     height: 100%;
     width: 100%;
     float:left;
     overflow: hidden;
+    padding: 0;
+    margin: 0;
 }
 
 #equationInput{
@@ -28,16 +34,23 @@
     background-color: #5086ad;
 }
 
-.axis path,
+.axis,
 .axis line {
     fill: none;
-    stroke: black;
     shape-rendering: crispEdges;
+}
+
+.vector {
+    stroke: green;
+    opacity: .75;
+    stroke-width: 1px;
+    fill: none;
 }
 
 .axis text {
     font-family: sans-serif;
     font-size: 11px;
+    text-align: left;
 }
 
 .tick line
@@ -99,7 +112,8 @@ g, path.domain
 }
 
 .ui-accordion .ui-accordion-content {
-    padding: 1em 1em;
+    padding: 0;
+    margin: 0;
     text-align: center;
     background-color: #f5f5f5;
     border-color: #4F4F4F;
@@ -108,7 +122,7 @@ g, path.domain
 .ui-state-active {
     border: #4F4F4F;
     stroke: white;
-    background: #636363;
+    background-color: #636363;
     text-align: center;
 }
 
